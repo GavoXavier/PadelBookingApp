@@ -26,16 +26,16 @@ const RentAndBuyEquipment = ({ setStep, racketCount, setRacketCount, buyBalls, s
           <div className="flex items-center">
             <button
               onClick={decrementRacketCount}
-              className="bg-gray-300 text-gray-700 px-2 py-1 rounded-l-lg"
+              className="bg-gray-300 text-gray-700 px-2 py-1 rounded-l-full"
             >
               <FontAwesomeIcon icon={faMinus} />
             </button>
-            <div className="px-4 py-1 bg-white text-gray-800 border border-gray-300">
+            <div className="px-4 py-1 bg-white text-gray-800 border border-gray-300 rounded-full mx-2">
               {racketCount}
             </div>
             <button
               onClick={incrementRacketCount}
-              className="bg-gray-300 text-gray-700 px-2 py-1 rounded-r-lg"
+              className="bg-gray-300 text-gray-700 px-2 py-1 rounded-r-full"
             >
               <FontAwesomeIcon icon={faPlus} />
             </button>
@@ -52,7 +52,7 @@ const RentAndBuyEquipment = ({ setStep, racketCount, setRacketCount, buyBalls, s
               onChange={(e) => setBuyBalls(e.target.checked)}
               className="mr-2"
             />
-            <label className="text-gray-700">
+            <label className="text-white">
               Buy pack of 3 balls @ Ksh. {ballPackCost}
             </label>
           </div>
@@ -63,7 +63,7 @@ const RentAndBuyEquipment = ({ setStep, racketCount, setRacketCount, buyBalls, s
       <div className="mt-8 flex justify-between items-center">
         <button
           onClick={() => setStep(2)}
-          className="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center hover:bg-gray-800"
+          className="bg-gray-700 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 flex items-center hover:bg-gray-800"
         >
           <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
           Previous: Courts & Time
@@ -71,7 +71,7 @@ const RentAndBuyEquipment = ({ setStep, racketCount, setRacketCount, buyBalls, s
         <button
           onClick={() => setStep(4)}
           disabled={racketCount === 0 && !buyBalls}
-          className={`bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center ${
+          className={`bg-orange-500 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 flex items-center ${
             racketCount === 0 && !buyBalls ? 'opacity-50 cursor-not-allowed' : 'hover:bg-orange-600'
           }`}
         >

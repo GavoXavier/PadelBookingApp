@@ -16,72 +16,59 @@ const BookingSteps = ({ step, user, bookingDetails }) => {
     setOverlayVisible(false);
   };
 
+  const steps = [
+    { icon: faCalendarAlt, label: "Booking Date" },
+    { icon: faTrophy, label: "Courts & Time" },
+    { icon: faShoppingCart, label: "Rent & Buy Equipment" },
+    { icon: faLock, label: "Private Booking" },
+    { icon: faFileInvoiceDollar, label: "Pay Booking" }
+  ];
+
+  const progressPercentage = (step / steps.length) * 100;
+
   return (
-    <div className="w-full lg:w-1/3 p-6 bg-gray-900 text-white flex-shrink-0 rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold mb-6 text-orange-500">BOOKING STEPS</h2>
-      <ul className="space-y-4">
-        <li>
-          <button 
-            className={`flex items-center w-full text-left py-2 px-4 rounded-lg transition-all duration-300 ${
-              step >= 1 ? 'bg-white text-gray-900' : 'bg-gray-700 text-gray-400'
-            }`}
-            disabled={step < 1}
-          >
-            <FontAwesomeIcon icon={faCalendarAlt} className="mr-3 text-orange-500" />
-            Booking Date
-          </button>
-        </li>
-        <li>
-          <button 
-            className={`flex items-center w-full text-left py-2 px-4 rounded-lg transition-all duration-300 ${
-              step >= 2 ? 'bg-white text-gray-900' : 'bg-gray-700 text-gray-400'
-            }`}
-            disabled={step < 2}
-          >
-            <FontAwesomeIcon icon={faTrophy} className="mr-3 text-orange-500" />
-            Courts & Time
-          </button>
-        </li>
-        <li>
-          <button 
-            className={`flex items-center w-full text-left py-2 px-4 rounded-lg transition-all duration-300 ${
-              step >= 3 ? 'bg-white text-gray-900' : 'bg-gray-700 text-gray-400'
-            }`}
-            disabled={step < 3}
-          >
-            <FontAwesomeIcon icon={faShoppingCart} className="mr-3 text-orange-500" />
-            Rent & Buy Equipment
-          </button>
-        </li>
-        <li>
-          <button 
-            className={`flex items-center w-full text-left py-2 px-4 rounded-lg transition-all duration-300 ${
-              step >= 4 ? 'bg-white text-gray-900' : 'bg-gray-700 text-gray-400'
-            }`}
-            disabled={step < 4}
-          >
-            <FontAwesomeIcon icon={faLock} className="mr-3 text-orange-500" />
-            Private Booking
-          </button>
-        </li>
-        <li>
-          <button 
-            className={`flex items-center w-full text-left py-2 px-4 rounded-lg transition-all duration-300 ${
-              step >= 5 ? 'bg-white text-gray-900' : 'bg-gray-700 text-gray-400'
-            }`}
-            disabled={step < 5}
-            onClick={handleOpenOverlay}
-          >
-            <FontAwesomeIcon icon={faFileInvoiceDollar} className="mr-3 text-orange-500" />
-            Pay Booking
-          </button>
-        </li>
-      </ul>
+    <div className="w-full p-4 bg-gray-900 text-white flex-shrink-0 rounded-lg shadow-lg">
+      {/* Icons and Labels for Normal Screens */}
+      <div className="hidden lg:flex justify-between items-center mb-4">
+        {steps.map((stepItem, index) => (
+          <div key={index} className="flex flex-col items-center">
+            <div
+              className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-500 ease-in-out ${step > index ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-400'}`}
+            >
+              <FontAwesomeIcon icon={stepItem.icon} />
+            </div>
+            <span className="mt-2 text-sm">{stepItem.label}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Icons and Progress Bar for Mobile Screens */}
+      <div className="lg:hidden flex flex-col items-center mb-4">
+        <div className="flex justify-between w-full mb-2">
+          {steps.map((stepItem, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-500 ease-in-out ${step > index ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-400'}`}
+              >
+                <FontAwesomeIcon icon={stepItem.icon} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="w-full bg-gray-700 rounded-full h-2 relative overflow-hidden">
+          <div
+            className="bg-orange-500 h-2 absolute top-0 left-0 transition-all duration-700 ease-in-out"
+            style={{ width: `${progressPercentage}%` }}
+          ></div>
+        </div>
+      </div>
+
+      {/* Overlay for Payment Summary */}
       {isOverlayVisible && (
-        <ReceiptOverlay 
-          user={user} 
-          bookingDetails={bookingDetails} 
-          onClose={handleCloseOverlay} 
+        <ReceiptOverlay
+          user={user}
+          bookingDetails={bookingDetails}
+          onClose={handleCloseOverlay}
         />
       )}
     </div>

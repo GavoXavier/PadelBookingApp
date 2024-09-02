@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HomeNav from './HomeNav';
+import backgroundImage from './images/1.png'; // Importing the image directly
 
 const HomePage = () => {
   return (
@@ -12,7 +13,7 @@ const HomePage = () => {
       <section
         id="home"
         className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: 'url(/components/HomePage/images/1.png)' }} // Adjusted path to the background image
+        style={{ backgroundImage: `url(${backgroundImage})` }} // Use the imported image
       >
         {/* Dark overlay for better text contrast */}
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>

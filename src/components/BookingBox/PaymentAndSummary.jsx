@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReceipt } from '@fortawesome/free-solid-svg-icons';
+import { faReceipt, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-const PaymentAndSummary = ({ bookingDetails }) => {
+const PaymentAndSummary = ({ bookingDetails, onBack }) => {
   const [showReceipt, setShowReceipt] = useState(false);
 
   if (!bookingDetails) {
@@ -30,14 +31,24 @@ const PaymentAndSummary = ({ bookingDetails }) => {
         <p><strong>Players:</strong> {players.join(', ') || 'N/A'}</p>
         <p><strong>Total Amount:</strong> Ksh. {totalAmount}</p>
       </div>
-      
-      <button
-        onClick={handleShowReceipt}
-        className="bg-orange-500 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:bg-orange-600 flex items-center"
-      >
-        <FontAwesomeIcon icon={faReceipt} className="mr-2" />
-        Show Receipt
-      </button>
+
+      <div className="flex justify-between">
+        <button
+          onClick={onBack} // Back button takes the user back to Private Booking step
+          className="bg-gray-700 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gray-600 flex items-center"
+        >
+          <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
+          Back
+        </button>
+
+        <button
+          onClick={handleShowReceipt}
+          className="bg-orange-500 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-orange-600 flex items-center"
+        >
+          <FontAwesomeIcon icon={faReceipt} className="mr-2" />
+          Show Receipt
+        </button>
+      </div>
 
       {showReceipt && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
@@ -53,7 +64,7 @@ const PaymentAndSummary = ({ bookingDetails }) => {
             </div>
             <button
               onClick={handleCloseReceipt}
-              className="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:bg-red-700"
+              className="bg-red-600 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-red-700"
             >
               Close
             </button>
@@ -62,6 +73,18 @@ const PaymentAndSummary = ({ bookingDetails }) => {
       )}
     </div>
   );
+};
+
+PaymentAndSummary.propTypes = {
+  bookingDetails: PropTypes.shape({
+    date: PropTypes.string,
+    slots: PropTypes.arrayOf(PropTypes.string),
+    racketCount: PropTypes.number,
+    buyBalls: PropTypes.bool,
+    players: PropTypes.arrayOf(PropTypes.string),
+    totalAmount: PropTypes.number,
+  }),
+  onBack: PropTypes.func.isRequired,  // Ensure the onBack prop is required
 };
 
 export default PaymentAndSummary;

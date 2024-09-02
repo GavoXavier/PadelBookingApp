@@ -31,13 +31,20 @@ const BookingBox = () => {
     totalAmount,
   };
 
+  // Function to go back to the previous step
+  const handleBack = () => {
+    if (step > 1) {
+      setStep(step - 1);
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <header>
         <Navbar />
       </header>
-      <main className="flex-grow flex flex-col lg:flex-row justify-center items-center py-10 px-4 bg-gray-900">
-        <div className="bg-gray-800 shadow-lg flex flex-col lg:flex-row rounded-lg overflow-hidden w-full max-w-6xl">
+      <main className="flex-grow flex flex-col justify-center items-center py-10 px-4 bg-gray-900">
+        <div className="bg-gray-800 shadow-lg flex flex-col rounded-lg overflow-hidden w-full max-w-6xl">
           <BookingSteps step={step} bookingDetails={bookingDetails} />
 
           <div className="flex-1 p-6">
@@ -78,7 +85,10 @@ const BookingBox = () => {
             )}
 
             {step === 5 && (
-              <PaymentAndSummary bookingDetails={bookingDetails} />
+              <PaymentAndSummary 
+                bookingDetails={bookingDetails} 
+                onBack={handleBack}  // Pass the back function here
+              />
             )}
 
             <div className="mt-8 text-right">

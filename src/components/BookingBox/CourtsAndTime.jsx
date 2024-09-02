@@ -35,7 +35,7 @@ const CourtsAndTime = ({ setStep, selectedSlots, setSelectedSlots }) => {
             {court1Slots.map((slot) => (
               <button
                 key={`court1-${slot}`}
-                className={`py-2 px-4 rounded-lg border flex items-center justify-between ${selectedSlots.includes(`Court 1 - ${slot}`) ? 'bg-orange-500 text-white' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
+                className={`py-2 px-3 rounded-full border flex items-center justify-between ${selectedSlots.includes(`Court 1 - ${slot}`) ? 'bg-orange-500 text-white' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
                 onClick={() => toggleTimeSlot(`Court 1 - ${slot}`)}
               >
                 <FontAwesomeIcon icon={faTableTennisPaddleBall} className="mr-2" />
@@ -51,7 +51,7 @@ const CourtsAndTime = ({ setStep, selectedSlots, setSelectedSlots }) => {
             {court2Slots.map((slot) => (
               <button
                 key={`court2-${slot}`}
-                className={`py-2 px-4 rounded-lg border flex items-center justify-between ${selectedSlots.includes(`Court 2 - ${slot}`) ? 'bg-orange-500 text-white' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
+                className={`py-2 px-3 rounded-full border flex items-center justify-between ${selectedSlots.includes(`Court 2 - ${slot}`) ? 'bg-orange-500 text-white' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
                 onClick={() => toggleTimeSlot(`Court 2 - ${slot}`)}
               >
                 <FontAwesomeIcon icon={faTableTennisPaddleBall} className="mr-2" />
@@ -97,7 +97,7 @@ const CourtsAndTime = ({ setStep, selectedSlots, setSelectedSlots }) => {
       <div className="mt-8 flex justify-between items-center">
         <button
           onClick={() => setStep(1)}
-          className="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center hover:bg-gray-800"
+          className="bg-gray-700 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 flex items-center hover:bg-gray-800"
         >
           <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
           Previous: Booking Date
@@ -105,7 +105,7 @@ const CourtsAndTime = ({ setStep, selectedSlots, setSelectedSlots }) => {
         <button
           onClick={() => setStep(3)}
           disabled={selectedSlots.length === 0}
-          className={`bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center ${
+          className={`bg-orange-500 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 flex items-center ${
             selectedSlots.length === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-orange-600'
           }`}
         >

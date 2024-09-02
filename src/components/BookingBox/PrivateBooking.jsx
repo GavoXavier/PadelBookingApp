@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight, faUserPlus, faUser, faSearch } from '@fortawesome/free-solid-svg-icons';
 
-// A sample list of randomized users (in a real app, this would be fetched from a database)
 const availablePlayers = [
   'John Doe',
   'Jane Smith',
@@ -33,7 +32,7 @@ const PrivateBooking = ({ setStep, selectedPlayers, setSelectedPlayers }) => {
     ? availablePlayers.filter(player =>
         player.toLowerCase().includes(searchTerm.toLowerCase())
       )
-    : []; // Return an empty array if no search term is provided
+    : [];
 
   return (
     <div className="flex flex-col justify-between h-full">
@@ -49,7 +48,7 @@ const PrivateBooking = ({ setStep, selectedPlayers, setSelectedPlayers }) => {
                 placeholder="Search players..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="border border-gray-300 rounded-lg py-2 px-4 w-full"
+                className="border border-gray-300 rounded-full py-2 px-4 w-full"
               />
               <FontAwesomeIcon icon={faSearch} className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500" />
             </div>
@@ -58,7 +57,7 @@ const PrivateBooking = ({ setStep, selectedPlayers, setSelectedPlayers }) => {
                 {filteredPlayers.map((player) => (
                   <button
                     key={player}
-                    className={`py-2 px-4 rounded-lg border flex items-center justify-between ${selectedPlayers.includes(player) ? 'bg-green-600 text-white' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
+                    className={`py-2 px-3 rounded-full border flex items-center justify-between ${selectedPlayers.includes(player) ? 'bg-green-600 text-white' : 'bg-gray-800 text-white hover:bg-gray-700'}`}
                     onClick={() => addPlayer(player)}
                     disabled={selectedPlayers.length >= 4 && !selectedPlayers.includes(player)}
                   >
@@ -74,7 +73,7 @@ const PrivateBooking = ({ setStep, selectedPlayers, setSelectedPlayers }) => {
           <div className="flex flex-wrap gap-4">
             {selectedPlayers.length > 0 ? (
               selectedPlayers.map((player, index) => (
-                <div key={index} className="bg-gray-700 shadow-md rounded-lg flex items-center p-2">
+                <div key={index} className="bg-gray-700 shadow-md rounded-full flex items-center p-2">
                   <FontAwesomeIcon icon={faUser} className="mr-2 text-white" />
                   <span className="text-white">{player}</span>
                   <button
@@ -95,16 +94,16 @@ const PrivateBooking = ({ setStep, selectedPlayers, setSelectedPlayers }) => {
       <div className="mt-8 flex justify-between items-center">
         <button
           onClick={() => setStep(3)}
-          className="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center hover:bg-gray-800"
+          className="bg-gray-700 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 flex items-center hover:bg-gray-800"
         >
           <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
-          Previous: Rent & Buy
+          Previous  
         </button>
         <button
           onClick={() => setStep(5)}
-          className="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center hover:bg-orange-600"
+          className="bg-orange-500 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 flex items-center hover:bg-orange-600"
         >
-          Next: Payment Summary
+          Next: Payment
           <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
         </button>
       </div>
