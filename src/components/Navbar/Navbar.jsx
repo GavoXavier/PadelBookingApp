@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   return (
@@ -7,9 +10,13 @@ const Navbar = () => {
         <h1 className="text-white text-xl font-bold">BiteBox Padel</h1>
         <ul className="flex space-x-6">
           <li>
-            <button className="text-white text-lg hover:text-gray-300 transition-colors duration-300">
+            <Link 
+              to="/" 
+              className="bg-orange-500 text-white text-lg px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors duration-300 flex items-center"
+            >
+              <FontAwesomeIcon icon={faHome} className="mr-2" />
               Home
-            </button>
+            </Link>
           </li>
         </ul>
       </div>

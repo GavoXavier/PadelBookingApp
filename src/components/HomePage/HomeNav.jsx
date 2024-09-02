@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTableTennisPaddleBall, faUtensils, faQuestionCircle, faUserGraduate, faStore, faInfoCircle, faEnvelope, faTicketAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTableTennisPaddleBall, faUtensils, faQuestionCircle, faUserGraduate, faStore, faMapMarkerAlt, faEnvelope, faTicketAlt } from '@fortawesome/free-solid-svg-icons';
 
 const HomeNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,13 +58,13 @@ const HomeNav = () => {
           <FontAwesomeIcon icon={faStore} className="mr-1" /> Store
         </ScrollLink>
         <ScrollLink
-          to="aboutUs"
+          to="location"
           smooth={true}
           duration={500}
           className="text-white hover:text-orange-500 font-semibold"
           style={{ cursor: `url('/images/racket-cursor.png'), pointer` }}  // Custom cursor
         >
-          <FontAwesomeIcon icon={faInfoCircle} className="mr-1" /> About Us
+          <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-1" /> Location
         </ScrollLink>
         <ScrollLink
           to="contactUs"
@@ -107,8 +107,8 @@ const HomeNav = () => {
           <ScrollLink to="store" smooth={true} duration={500} onClick={toggleNav} className="block px-4 py-2 rounded-md text-base font-semibold">
             <FontAwesomeIcon icon={faStore} className="mr-1" /> Store
           </ScrollLink>
-          <ScrollLink to="aboutUs" smooth={true} duration={500} onClick={toggleNav} className="block px-4 py-2 rounded-md text-base font-semibold">
-            <FontAwesomeIcon icon={faInfoCircle} className="mr-1" /> About Us
+          <ScrollLink to="location" smooth={true} duration={500} onClick={toggleNav} className="block px-4 py-2 rounded-md text-base font-semibold">
+            <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-1" /> Location
           </ScrollLink>
           <ScrollLink to="contactUs" smooth={true} duration={500} onClick={toggleNav} className="block px-4 py-2 rounded-md text-base font-semibold">
             <FontAwesomeIcon icon={faEnvelope} className="mr-1" /> Contact Us

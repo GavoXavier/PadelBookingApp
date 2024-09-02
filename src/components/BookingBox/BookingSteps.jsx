@@ -8,13 +8,11 @@ import ReceiptOverlay from './ReceiptOverlay';
 const BookingSteps = ({ step, user, bookingDetails }) => {
   const [isOverlayVisible, setOverlayVisible] = useState(false);
 
-  const handleOpenOverlay = () => {
-    setOverlayVisible(true);
-  };
+  // const handleOpenOverlay = () => {
+  //   setOverlayVisible(true);
+  // };
 
-  const handleCloseOverlay = () => {
-    setOverlayVisible(false);
-  };
+  const handleCloseOverlay = () => setOverlayVisible(false);
 
   const steps = [
     { icon: faCalendarAlt, label: "Booking Date" },
@@ -33,7 +31,7 @@ const BookingSteps = ({ step, user, bookingDetails }) => {
         {steps.map((stepItem, index) => (
           <div key={index} className="flex flex-col items-center">
             <div
-              className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-500 ease-in-out ${step > index ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-400'}`}
+              className={`w-12 h-12 rounded-full flex items-center justify-center ${step > index ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-400'}`}
             >
               <FontAwesomeIcon icon={stepItem.icon} />
             </div>
@@ -48,16 +46,16 @@ const BookingSteps = ({ step, user, bookingDetails }) => {
           {steps.map((stepItem, index) => (
             <div key={index} className="flex flex-col items-center">
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-500 ease-in-out ${step > index ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-400'}`}
+                className={`w-8 h-8 rounded-full flex items-center justify-center ${step > index ? 'bg-orange-500 text-white' : 'bg-gray-700 text-gray-400'}`}
               >
                 <FontAwesomeIcon icon={stepItem.icon} />
               </div>
             </div>
           ))}
         </div>
-        <div className="w-full bg-gray-700 rounded-full h-2 relative overflow-hidden">
+        <div className="w-full bg-gray-700 rounded-full h-2">
           <div
-            className="bg-orange-500 h-2 absolute top-0 left-0 transition-all duration-700 ease-in-out"
+            className="bg-orange-500 h-2 rounded-full"
             style={{ width: `${progressPercentage}%` }}
           ></div>
         </div>
